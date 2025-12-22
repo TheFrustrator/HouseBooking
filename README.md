@@ -1,50 +1,97 @@
-# Welcome to your Expo app 👋
+# HouseBooking
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A lightweight mobile app for listing, searching and booking short-term accommodation. This README gives a concise project overview, core features, and the tech stack used for the React Native application. Replace placeholders with specifics from your project (versions, exact commands, API endpoints).
 
-## Get started
+## Project overview (brief)
+HouseBooking is a mobile-first property booking app that lets hosts list properties and guests search, check availability, and make bookings from their phones. The app focuses on a smooth booking flow, an intuitive UI, and a compact host dashboard experience on mobile.
 
-1. Install dependencies
+## Key features
+- Property listings with photos, descriptions and amenities
+- Search and filtering (location, price, dates, guests)
+- Availability calendar and booking flow
+- Host functionality to create/edit listings and manage reservations
+- User authentication and profile management
+- Reservation status, confirmations and simple cancellation flow
+- (Optional) Payment integration and push/email notifications
 
-   ```bash
-   npm install
-   ```
+## Tech stack (used)
+- Mobile framework: React Native (TypeScript)
+- Styling: NativeWind (Tailwind-style utility classes for React Native)
+- Language: TypeScript
+- Navigation: React Navigation (recommended)
+- State management: (examples) React Context / Redux / Zustand — replace with what you used
+- Backend / API: (replace with your backend — e.g., Node.js + Express + PostgreSQL, Firebase, or serverless)
+- Images & storage: (e.g., AWS S3, Firebase Storage, local device cache)
+- Payments: Stripe (optional)
+- Dev tooling: Metro bundler, ESlint, Prettier, TypeScript
+- Optional: Expo (if you used Expo) — otherwise React Native CLI (bare workflow)
+- CI/CD: GitHub Actions / Fastlane (optional)
 
-2. Start the app
+## Architecture (high level)
+- Mobile client (React Native + TypeScript) communicates with a REST or GraphQL API.
+- API handles authentication, listings, bookings, and payment webhooks.
+- Database stores users, listings, availability and bookings; assets stored in object storage.
+- Background jobs/processes handle notifications, availability updates and webhook processing (if applicable).
 
-   ```bash
-   npx expo start
-   ```
+## Project structure (example)
+- /src
+  - /components — shared UI components
+  - /screens — screen components grouped by feature
+  - /navigation — navigation stacks and routes
+  - /hooks — custom hooks
+  - /services — API clients, auth, storage helpers
+  - /utils — helpers and constants
+  - /assets — images, fonts
+- /android, /ios (native projects if bare RN)
 
-In the output, you'll find options to open the app in a
+## Quick setup (choose your workflow)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+If you used Expo:
+1. Install Expo CLI (if needed): `npm install -g expo-cli`
+2. Clone the repo: `git clone https://github.com/TheFrustrator/HouseBooking.git`
+3. Install dependencies: `yarn` or `npm install`
+4. Copy env template: `cp .env.example .env` and fill in API keys
+5. Start the dev server: `expo start`  
+6. Run on device or simulator from Expo Dev Tools
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+If you used React Native CLI (bare workflow):
+1. Ensure native toolchain is installed (Android Studio / Xcode)
+2. Clone the repo: `git clone https://github.com/TheFrustrator/HouseBooking.git`
+3. Install dependencies: `yarn` or `npm install`
+4. Copy env template: `cp .env.example .env` and fill in API keys
+5. Run Metro: `yarn start`
+6. Run on Android: `yarn android`  
+   Run on iOS: `yarn ios` (macOS + Xcode required)
 
-## Get a fresh project
+Notes:
+- If you use CocoaPods for iOS, run `cd ios && pod install` after installing deps.
+- Add any required app signing or API key steps here.
 
-When you're ready, run:
+## Example scripts (package.json)
+- `start` — start Metro / Expo
+- `android` — build & run on Android emulator/device
+- `ios` — build & run on iOS simulator
+- `lint` — run eslint
+- `test` — run tests
 
-```bash
-npm run reset-project
-```
+(Replace with the actual scripts in your package.json.)
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Testing & Quality
+- Unit / component tests: Jest + React Native Testing Library (recommended)
+- Linting: ESLint + Prettier
+- Types: TypeScript with strict settings (recommended)
 
-## Learn more
+## To do / Improvements
+- Add tests for booking edge cases (concurrent bookings, double-book prevention)
+- Add offline-first behaviors and image caching
+- Improve search relevance and pagination
+- Add stronger RBAC for hosts and admins
+- Integrate push notifications and email confirmations
+- Add end-to-end tests (Detox / Playwright for mobile)
 
-To learn more about developing your project with Expo, look at the following resources:
+## Contributing
+If you'd like to contribute, open an issue to discuss your idea or submit a pull request with a clear description and tests where applicable.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Contact
+Author: TheFrustrator  
+If you tell me whether you used Expo or the React Native CLI and which backend or libraries you included (e.g., React Navigation, Stripe, Firebase, Redux), I’ll update this README with exact commands, dependency versions, and specific setup steps.

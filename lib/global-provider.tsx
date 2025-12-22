@@ -11,7 +11,7 @@ interface User {
 
 interface GlobalContextType {
   isLogging: boolean;
-  user: User | null;
+  user?: User | null;
   loading: boolean;
   refetch: (newParams?: Record<string, string | number>) => Promise<void>;
 }
@@ -19,13 +19,26 @@ interface GlobalContextType {
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
-  const { data: user, loading, refetch } = useAppwrite({ fn: getCurrentUser });
+  const {
+    data: user,
+    loading,
+    refetch,
+  } = useAppwrite({
+    fn: getCurrentUser,
+  });
 
   const isLoggedIn = !!user;
 
   console.log(JSON.stringify(user, null, 2));
   return (
-    <GlobalContext.Provider value={{ isLoggedIn, user, loading, refetch }}>
+    <GlobalContext.Provider
+      value={{
+        isLoggedIn,
+        user,
+        loading,
+        refetch,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );
@@ -39,4 +52,4 @@ export const useGlobalContext = (): GlobalContextType => {
   return context;
 };
 
-export default GlobalProvider
+export default GlobalProvider;
