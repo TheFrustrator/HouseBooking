@@ -94,4 +94,3 @@ If you'd like to contribute, open an issue to discuss your idea or submit a pull
 
 ## Contact
 Author: TheFrustrator  
-If you tell me whether you used Expo or the React Native CLI and which backend or libraries you included (e.g., React Navigation, Stripe, Firebase, Redux), I’ll update this README with exact commands, dependency versions, and specific setup steps.
